@@ -26,46 +26,34 @@ public class User implements UserDetails {
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = SEQUENCE, generator = "user_sequence")
-    @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "user_name")
-    private String name;
+    private String firstName;
 
-    @Column(name = "username")
-    private String username;
+    private String lastName;
 
-    @Column(name = "user_email")
     private String email;
 
-    @Column(name = "user_password")
     private String password;
 
     @Enumerated(STRING)
-    @Column(name = "user_role")
     private UserRole role;
 
-    @Column(name = "is_locked")
-    private Boolean locked;
+    private Boolean locked = false;
 
-    @Column(name = "is_enabled")
-    private Boolean enabled;
+    private Boolean enabled = false;
 
 
-    public User(String name,
-                String username,
+    public User(String firstName,
+                String lastName,
                 String email,
                 String password,
-                UserRole role,
-                Boolean locked,
-                Boolean enabled) {
-        this.name = name;
-        this.username = username;
+                UserRole role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.locked = locked;
-        this.enabled = enabled;
     }
 
     @Override
@@ -82,7 +70,15 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
