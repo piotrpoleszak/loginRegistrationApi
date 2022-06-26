@@ -9,8 +9,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/loginUserData
     username: postgres
   jpa:
+    open-in-view: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
       properties:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true

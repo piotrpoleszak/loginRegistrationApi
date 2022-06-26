@@ -20,26 +20,35 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = SEQUENCE, generator = "user_sequence")
+    @Column(name = "user_id")
     private Long id;
 
+    @Column(name = "user_name")
     private String name;
 
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "user_email")
     private String email;
 
+    @Column(name = "user_password")
     private String password;
 
     @Enumerated(STRING)
+    @Column(name = "user_role")
     private UserRole role;
 
+    @Column(name = "is_locked")
     private Boolean locked;
 
+    @Column(name = "is_enabled")
     private Boolean enabled;
 
 
