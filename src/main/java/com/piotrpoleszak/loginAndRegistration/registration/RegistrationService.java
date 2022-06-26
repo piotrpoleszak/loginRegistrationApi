@@ -2,7 +2,6 @@ package com.piotrpoleszak.loginAndRegistration.registration;
 
 import com.piotrpoleszak.loginAndRegistration.exception.CoreException;
 import com.piotrpoleszak.loginAndRegistration.user.UserDto;
-import com.piotrpoleszak.loginAndRegistration.user.UserRole;
 import com.piotrpoleszak.loginAndRegistration.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,11 +18,7 @@ public class RegistrationService {
     private final UserService userService;
 
     public String register(RegistrationRequest request) {
-        boolean isValidEmail = emailValidator.test(request.getEmail());
-
-        if (!isValidEmail) {
-            throw new CoreException(VALIDATE_ERROR, EMAIL_NOT_VALID);
-        }
+        isEmailValidate(request);
 
         return userService.signUpUser(
                 new UserDto(
@@ -34,5 +29,13 @@ public class RegistrationService {
                         USER
                 )
         );
+    }
+
+    private void isEmailValidate(RegistrationRequest request) {
+        boolean isValidEmail = emailValidator.test(request.getEmail());
+
+        if (!isValidEmail) {
+            throw new CoreException(VALIDATE_ERROR, EMAIL_NOT_VALID);
+        }
     }
 }
