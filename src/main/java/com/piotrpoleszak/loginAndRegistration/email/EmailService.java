@@ -1,8 +1,6 @@
 package com.piotrpoleszak.loginAndRegistration.email;
 
 import com.piotrpoleszak.loginAndRegistration.exception.CoreException;
-import com.piotrpoleszak.loginAndRegistration.exception.ErrorCode;
-import com.piotrpoleszak.loginAndRegistration.exception.ErrorSubcode;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +33,7 @@ public class EmailService implements EmailSender {
             helper.setTo(to);
             helper.setSubject("Confirm your email");
             helper.setFrom("piotrpoleszak00@gmail.com");
-
+            mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             LOGGER.error("Email send fail", e);
             throw new CoreException(VALIDATE_ERROR, EMAIL_SEND_FAILED);

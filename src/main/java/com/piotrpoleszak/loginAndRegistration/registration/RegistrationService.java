@@ -2,7 +2,6 @@ package com.piotrpoleszak.loginAndRegistration.registration;
 
 import com.piotrpoleszak.loginAndRegistration.email.EmailSender;
 import com.piotrpoleszak.loginAndRegistration.exception.CoreException;
-import com.piotrpoleszak.loginAndRegistration.registration.token.ConfirmationToken;
 import com.piotrpoleszak.loginAndRegistration.registration.token.ConfirmationTokenService;
 import com.piotrpoleszak.loginAndRegistration.user.UserDto;
 import com.piotrpoleszak.loginAndRegistration.user.UserService;

@@ -15,8 +15,8 @@ import java.util.UUID;
 
 import static com.piotrpoleszak.loginAndRegistration.exception.ErrorCode.NOT_FOUND;
 import static com.piotrpoleszak.loginAndRegistration.exception.ErrorCode.VALIDATE_ERROR;
-import static com.piotrpoleszak.loginAndRegistration.exception.ErrorSubcode.USER_WITH_EMAIL_ALREADY_EXIST;
 import static com.piotrpoleszak.loginAndRegistration.exception.ErrorSubcode.USER_NOT_FOUND;
+import static com.piotrpoleszak.loginAndRegistration.exception.ErrorSubcode.USER_WITH_EMAIL_ALREADY_EXIST;
 
 @Service
 @AllArgsConstructor
@@ -53,8 +53,9 @@ public class UserService implements UserDetailsService {
 
     private void userValidator(String email) {
         var userExist = userRepository.findByEmail(email).isPresent();
+        var userConfirmed = userRepository.findByEmail(email).get().isEnabled();
 
-        if (userExist) {
+        if (userExist && userConfirmed) {
             throw new CoreException(VALIDATE_ERROR, USER_WITH_EMAIL_ALREADY_EXIST);
         }
     }

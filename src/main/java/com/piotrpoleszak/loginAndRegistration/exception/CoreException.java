@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @ResponseStatus(value = NOT_FOUND)
-public class CoreException extends RuntimeException{
+public class CoreException extends RuntimeException {
 
     private final ErrorCode errorCode;
     private final ErrorSubcode errorSubcode;
