@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
     password: postgres
-    url: jdbc:postgresql://localhost:5432/loginUserData
+    url: jdbc:postgresql://database:5432/loginUserData
     username: postgres
   jpa:
     open-in-view: true
@@ -17,7 +17,7 @@ spring:
         format_sql: true
     show-sql: true
   mail:
-    host: localhost
+    host: maildev
     port: 1025
     username: admin
     password: admin
