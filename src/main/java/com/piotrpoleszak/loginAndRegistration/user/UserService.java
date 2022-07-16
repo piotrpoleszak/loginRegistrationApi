@@ -53,9 +53,8 @@ public class UserService implements UserDetailsService {
 
     private void userValidator(String email) {
         var userExist = userRepository.findByEmail(email).isPresent();
-        var userConfirmed = userRepository.findByEmail(email).get().isEnabled();
 
-        if (userExist && userConfirmed) {
+        if (userExist) {
             throw new CoreException(VALIDATE_ERROR, USER_WITH_EMAIL_ALREADY_EXIST);
         }
     }
